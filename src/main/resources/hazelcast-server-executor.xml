@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazelcast
+    xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.8.xsd"
+    xmlns="http://www.hazelcast.com/schema/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--    <license-key>ENTERPRISE_HD#10Nodes#5uT1bVOAfmJSwHFUyalNE0rI7K6kj6009111070001019280011101111109
+    </license-key> -->
+    <instance-name>EXECUTOR</instance-name>
+
+    <properties>
+        <property name="hazelcast.logging.type">slf4j</property>
+    </properties>
+
+    <group>
+        <name>ronis</name>
+        <password>ronis</password>
+    </group>
+
+    <network>
+        <port auto-increment="true">5701</port>
+        <join>
+            <multicast enabled="false"></multicast>
+            <tcp-ip enabled="true">
+                <member>localhost</member>
+                <!-- <member>openapi02.dev.aws-ire.credorax.com</member> -->
+            </tcp-ip>
+        </join>
+    <!--    <ssl enabled="true">
+            <factory-class-name>com.hazelcast.nio.ssl.BasicSSLContextFactory
+            </factory-class-name>
+            <properties>
+                <property name="keyStore">/apps/tomcat/bin/hazelcast.ks</property>
+                <property name="keyStorePassword">12345678</property>
+                <property name="keyManagerAlgorithm">SunX509</property>
+                <property name="trustStore">/apps/tomcat/bin/hazelcast.ts</property>
+                <property name="trustStorePassword">12345678</property>
+                <property name="trustManagerAlgorithm">SunX509</property>
+                <property name="protocol">TLSv1.2</property>
+                <property name="mutualAuthentication">REQUIRED</property>
+            </properties>
+        </ssl> -->
+    </network>
+   <executor-service name="executorService">
+   <pool-size>1000</pool-size>
+   <queue-capacity>10</queue-capacity>
+   <statistics-enabled>true</statistics-enabled>
+</executor-service>
+</hazelcast>
